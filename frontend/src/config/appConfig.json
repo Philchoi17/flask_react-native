@@ -1,0 +1,7 @@
+{
+  "environment": "LOCAL",
+  "LOCAL": {
+    "serverUrl": "http://localhost:5000"
+  },
+  "language": "en"
+}
