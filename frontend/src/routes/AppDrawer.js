@@ -29,9 +29,9 @@ class AppDrawer extends Component {
   render() {
     return (
       <NavigationContainer>
-        <Drawer.Navigator  initialRouteName={Config.i18n('login')} drawerContent={props => {
+        <Drawer.Navigator  initialRouteName={ Config.i18n('login') } drawerContent={props => {
           return (
-            <DrawerContentScrollView {...props} style={{
+            <DrawerContentScrollView { ...props } style={{
               backgroundColor: Styles.colors.mainBG
             }}>
               <SafeAreaView style={{ flex: 1 }}>
@@ -45,13 +45,13 @@ class AppDrawer extends Component {
                   }}
                 >
                   <Image
-                    source={Styles.images.logo}
-                    width={50}
-                    height={50}
+                    source={ Styles.images.logo }
+                    width={ 50 }
+                    height={ 50 }
                   />
                 </View>
               </SafeAreaView>
-              <DrawerItemList {...props} />
+              <DrawerItemList { ...props } />
               {/* <DrawerItem style={{ bottom: -50 }} label={Config.i18n('changeLang')} onPress={() => {
                 Config.getLanguage() == 'en' ? 
                 Config.setLanguage('ko') : Config.setLanguage('en')
@@ -77,9 +77,9 @@ class AppDrawer extends Component {
                   }}
                 >
                   <Image
-                    source={Config.getLanguage() == 'en' ? Styles.images.usLangFlag : Styles.images.koLangFlag}
-                    // width={10}
-                    // height={10}
+                    source={ Config.getLanguage() == 'en' ? Styles.images.usLangFlag : Styles.images.koLangFlag }
+                    // width={ 10 }
+                    // height={ 10 }
                     style={{
                       flex: 1,
                       width: 20,

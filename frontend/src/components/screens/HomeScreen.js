@@ -6,15 +6,15 @@ class HomeScreen extends Component {
   render() {
     const { navigation } = this.props
     return (
-      <View style={styles.centerView}>
+      <View style={ styles.centerView }>
         <Text>Home Screen</Text>
         <Button 
           title='Go to Profile'
-          onPress={() => navigation.navigate('Profile')}
+          onPress={ () => navigation.navigate('Profile') }
         />
         <Button 
           title='testing'
-          onPress={() => console.log(Config.lang, Config.serverURL)}
+          onPress={ () => console.log(Config.lang, Config.serverURL) }
         />
       </View>
     )

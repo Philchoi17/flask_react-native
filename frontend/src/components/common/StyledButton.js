@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, TouchableOpacity, View, StyleSheet, Text } from 'react-native'
+import { TouchableOpacity, View, StyleSheet, Text } from 'react-native'
 import Styles from '../../util/Styles'
 
 class StyledButton extends Component {
@@ -13,8 +13,8 @@ class StyledButton extends Component {
 
   render() {
     return (
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity {...this.props} style={[styles.button, this.state.extraStyle]}>
+      <View style={ styles.buttonContainer }>
+        <TouchableOpacity { ...this.props } style={ [styles.button, this.state.extraStyle] }>
           <Text>{ this.state.buttonText }</Text>
         </TouchableOpacity>
       </View>

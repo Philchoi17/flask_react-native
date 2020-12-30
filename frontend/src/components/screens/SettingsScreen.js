@@ -15,7 +15,7 @@ class SettingsScreen extends Component {
 
   render() {
     return (
-      <View style={Styles.layouts.centerView}>
+      <View style={ Styles.layouts.centerView }>
         <Text>{ Config.i18n('settings') }</Text>
         <Button 
           title='change lang'

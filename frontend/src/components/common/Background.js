@@ -13,7 +13,7 @@ class Background extends Component {
   
   render() {
     return (
-      <View style={[styles.viewColor, this.state.moreStyle]}>
+      <View style={ [styles.viewColor, this.state.moreStyle] }>
         { this.props.children }
       </View>
     )

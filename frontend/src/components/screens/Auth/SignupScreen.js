@@ -6,7 +6,7 @@ import Styles from '../../../util/Styles'
 class SignupScreen extends Component {
   render() {
     return (
-      <View style={Styles.layouts.centerView}>
+      <View style={ Styles.layouts.centerView }>
         <Text>Sign up Screen</Text>
       </View>
     )

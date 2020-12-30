@@ -23,16 +23,16 @@ class LoginScreen extends Component {
 
   render() {
     return (
-      <Background moreStyle={Styles.layouts.centerView}>
-        <StyledImage source={require('../../../assets/images/logo/generic-logo.png')} />
+      <Background moreStyle={ Styles.layouts.centerView }>
+        <StyledImage source={ require('../../../assets/images/logo/generic-logo.png') } />
         <Input title='Username' />
         <Input title='Password' isPassword={true} />
         {/* <Text>Login Screen</Text> */}
         <StyledButton         
           buttonText={Config.i18n('login')}
-          onPress={() => {
+          onPress={ () => {
             AuthStore.login('test', 'test')
-          }}
+          } }
         />
       </Background>
     )

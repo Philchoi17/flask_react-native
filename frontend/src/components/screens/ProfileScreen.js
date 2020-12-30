@@ -7,11 +7,11 @@ class ProfileScreen extends Component {
     const { navigation } = this.props
 
     return (
-      <View style={styles.centerView}>
+      <View style={ styles.centerView }>
         <Text>Profile Screen</Text>
         <Button
           title='go home'
-          onPress={() => navigation.navigate('Home')}
+          onPress={ () => navigation.navigate('Home') }
         />
       </View>
     )
