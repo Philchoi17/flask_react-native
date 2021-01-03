@@ -47,7 +47,7 @@ class AppDrawer extends Component {
     console.log(userObj)
     // console.log(Object.keys(userObj).length == 0 && userObj.constructor == Object)
     return (
-      <Drawer.Navigator initialRouteName={ Config.i18n('login') } drawerContent={props => {
+      <Drawer.Navigator initialRouteName='Home' drawerContent={props => {
         return (
           <DrawerContentScrollView { ...props } style={{
             backgroundColor: Styles.colors.mainBG
@@ -98,13 +98,19 @@ class AppDrawer extends Component {
                 />
               </View>
             </TouchableOpacity>
-            <AnchorTag
-              style={{
-                paddingLeft: 10
-              }}
-              insideText={ Config.i18n('logout') }
-              onPress={ logout }
-            />
+            { Object.keys(userObj).length == 0 && userObj.constructor == Object ? 
+              null :
+              <AnchorTag
+                style={{
+                  paddingLeft: 10
+                }}
+                insideText={ Config.i18n('logout') }
+                onPress={() => {
+                  console.log('AppDrawer: Logout:', userObj)
+                  logout()
+                }}
+              />
+            }
           </DrawerContentScrollView>
         )
       }}>
@@ -118,22 +124,32 @@ class AppDrawer extends Component {
         /> */}
         { Object.keys(userObj).length == 0 && userObj.constructor == Object ? 
           <Drawer.Screen 
-            name={
-              `${ Config.i18n('login') } / ${ Config.i18n('signup') }`
-            }
+            name='AuthPages'
             component={ AuthStack }
+            options={{
+              drawerLabel: `${Config.i18n('login')} / ${Config.i18n('signup')}`
+            }}
           /> : 
           <Drawer.Screen
-            name={ Config.i18n('home') }
+            name='Home'
             component={ HomeScreen }
+            options={{
+              drawerLabel: Config.i18n('home')
+            }}
           /> }
         <Drawer.Screen
-          name={ Config.i18n('about') }
+          name='About'
           component={ AboutScreen }
+          options={{
+            drawerLabel: Config.i18n('about')
+          }}
         />
         <Drawer.Screen
-          name={ Config.i18n('settings') }
+          name='Settings'
           component={ SettingsScreen }
+          options={{
+            drawerLabel: Config.i18n('settings')
+          }}
         />
       </Drawer.Navigator>
     )

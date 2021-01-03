@@ -12,7 +12,7 @@ class AuthStore {
   test = 'string'
 
   login(username, password) {
-    AuthRequests.userLogin(username, password)
+    return AuthRequests.userLogin(username, password)
   }
 
   logout() {

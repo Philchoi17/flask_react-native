@@ -5,19 +5,21 @@ import { AuthStore } from '../../stores'
 class AuthRequests {
   async userLogin(username, password) {
     console.log('AuthRequests: userLogin:', username, password)
-    return await axios.post(Config.getServerUrl() + '/login', { username, password })
-      .then(async res => {
+    
+    return axios.post(Config.getServerUrl() + '/login', { username, password })
+      .then(res => {
         console.log('AuthRequests: userLogin:', res.data)
         if(res.data.login == 'ok') {
           console.log('AuthRequests: userLogin:', res.data.login)
-          await Config.setUser(res.data.user)
-          await AuthStore.setUserObj(res.data.user)
+          Config.setUser(res.data.user)
+          AuthStore.setUserObj(res.data.user)
           return true
         }
         console.log('NEVER GETS HERE')
         return false
         // console.log('AuthRequests: userLogin:', AuthStore.userObj)
       }).catch(err => console.log('AuthRequests: userLogin:', err))
+    
   }
 }
 

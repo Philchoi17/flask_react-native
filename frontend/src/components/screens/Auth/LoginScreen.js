@@ -6,7 +6,7 @@ import { Input, Background, StyledButton, StyledImage, AnchorTag } from '../../c
 import Styles from '../../../util/Styles'
 
 import { AuthContext } from '../../../providers/AuthProvider'
-// import { AuthStore } from '../../../stores'
+
 class LoginScreen extends Component {
 
   constructor(props) {
@@ -21,10 +21,45 @@ class LoginScreen extends Component {
   static contextType = AuthContext
 
   login() {
+    // console.log(props)
     if(this.state.username != '' && this.state.password != '') {
       console.log('going in the login')
       this.context.login(this.state.username, this.state.password)
-      
+        .then(loggedIn => {
+          if(loggedIn) {
+            console.log('SUCCESS', loggedIn)
+            // console.log(this.props.navigation)
+            this.props.navigation.navigate('Home')
+            return
+          }
+          Alert.alert(
+            'Unable to Login',
+            'Invalid Credentials',
+            [
+              { text: 'Cancel', style: 'cancen' },
+              { text: 'OK' }
+            ], { cancelable: false }
+          )
+        }).catch(err => {
+          console.log('LoginScreen: login: err', err)
+          Alert.alert(
+            'Unable to Login',
+            'Error',
+            [
+              { text: 'Cancel', style: 'cancen' },
+              { text: 'OK' }
+            ], { cancelable: false }
+          )
+        })
+      // if(loginSuccess) console.log('SUCCESS')
+      // else Alert.alert(
+      //   'Unable to Login',
+      //   'Invalid Credentials',
+      //   [
+      //     { text: 'Cancel', style: 'cancen' },
+      //     { text: 'OK' }
+      //   ], { cancelable: false }
+      // )
       return
     }
     Alert.alert(
@@ -45,7 +80,11 @@ class LoginScreen extends Component {
 
 
   render() {
+    console.log('LoginScreen: render: this.context:', this.context)
     const { navigation } = this.props
+
+    const { userObj } = this.context
+
     return (
       <Background moreStyle={ Styles.layouts.centerView }>
         <StyledImage source={ require('../../../assets/images/logo/generic-logo.png') } />
@@ -67,24 +106,11 @@ class LoginScreen extends Component {
         {/* <Text>Login Screen</Text> */}
         <StyledButton         
           buttonText={Config.i18n('login')}
-          onPress={ () => {
-            this.login()
-            // const loginSuccess = await this.login(this.state.username, this.state.password)
-            // console.log('LoginScreen: loginButton: onPress:', loginSuccess)
-            // if(loginSuccess) navigation.navigate(Config.i18n('home'))
-            // else Alert.alert(
-            //   'Unable to Login',
-            //   'Invalid Credentials',
-            //   [
-            //     { text: 'Cancel', style: 'cancen' },
-            //     { text: 'OK' }
-            //   ], { cancelable: false }
-            // )
-          } }
+          onPress={this.login}
         />
         <TouchableOpacity onPress={() => {
-          console.log('LoginScreen: testingButton: AuthStore:', AuthStore.userObj)
-          console.log('LoginScreen: testingButton: Authstore:', Config.getUser())
+          console.log('testing')
+          console.log('LoginScreen: Testing: AuthContext: UserObj', userObj)
         } }>
           <Text>testing button</Text>
         </TouchableOpacity>
