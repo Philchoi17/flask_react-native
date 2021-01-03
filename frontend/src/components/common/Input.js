@@ -5,14 +5,14 @@ import Styles from '../../util/Styles'
 class Input extends Component {
 
   constructor(props) {
-    console.log('common: Input: props:', props)
+    // console.log('common: Input: props:', props)
     super(props)
     this.state = {
       title: props.title,
       containerStyle: props.containerStyle,
       isPassword: props.isPassword || false,
       isFocused: false,
-      autoCorrect: props.autoCorrect || false
+      autoCorrect: props.autoCorrect || false,
     }
     this.handleFocus = this.handleFocus.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
@@ -20,7 +20,6 @@ class Input extends Component {
 
   handleFocus() {
     this.setState({ isFocused: true })
-    console.log(this.state)
   }
 
   handleBlur() {
@@ -32,6 +31,7 @@ class Input extends Component {
       <View style={ [styles.inputContainer] }>
         <Text style={ styles.text }>{ this.state.title }</Text>
         <TextInput
+          { ...this.props }
           autoCapitalize='none'
           autoCorrect={ this.state.autoCorrect }
           onFocus={ this.handleFocus }

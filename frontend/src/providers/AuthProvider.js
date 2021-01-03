@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AuthStore from '../stores/AuthStore'
+import { AuthStore } from '../stores'
 
 export const AuthContext = React.createContext(AuthStore)
 
@@ -9,7 +9,7 @@ class AuthProvider extends Component {
   }
   render() {
     return (
-      <AuthContext.Provider value={AuthContext}>
+      <AuthContext.Provider value={ AuthStore }>
         { this.props.children }
       </AuthContext.Provider>
     )

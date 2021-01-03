@@ -1,4 +1,3 @@
-import { action, decorate, observable } from 'mobx'
 import Config from '../config/Config'
 
 import AuthRequests from '../services/Auth/AuthRequests'
@@ -6,16 +5,20 @@ import AuthRequests from '../services/Auth/AuthRequests'
 class AuthStore {
   userObj = {}
 
+  setUserObj(userObj) {
+    this.userObj = userObj
+  }
+
   test = 'string'
 
   login(username, password) {
     AuthRequests.userLogin(username, password)
   }
-}
 
-// decorate(AuthStore, {
-//   userObj: observable,
-//   login: action
-// })
+  logout() {
+    this.userObj = {}
+    Config.setUser({})
+  }
+}
 
 export default new AuthStore()

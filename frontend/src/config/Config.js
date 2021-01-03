@@ -20,11 +20,21 @@ class Config {
   }
 
   i18n(textKey) {
-    console.log('i18n: textKey:', textKey, this.language, Lang[this.language])
+    // console.log('i18n: textKey:', textKey, this.language, Lang[this.language])
     if (Lang.hasOwnProperty(this.language) && Lang[this.language].hasOwnProperty(textKey)) {
       return Lang[this.language][textKey]
     }
     return ''
+  }
+
+  setUser(userObj) {
+    this.user = userObj
+    return PhoneStorage.saveItem('user', userObj)
+  }
+
+  getUser() {
+    return this.user
+    // return PhoneStorage.retrieveItem('user')
   }
 
   getLanguage() {

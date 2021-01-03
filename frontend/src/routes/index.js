@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { NavigationContainer } from '@react-navigation/native'
 // navigators
 import AppDrawer from './AppDrawer'
 // import AppTabs from './AppTabs'
@@ -11,7 +11,11 @@ class Routes extends Component {
   }
 
   render() {
-    return <AppDrawer />
+    return (
+      <NavigationContainer>
+        <AppDrawer />
+      </NavigationContainer>
+    )
   }
 }
 

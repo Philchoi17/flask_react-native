@@ -22,6 +22,7 @@ def login():
     if username == 'test' and password == 'test':
         print('working')
         response_object['login'] = 'ok'
+        response_object['user'] = {'username': 'test', 'type': 'client', 'access': True} 
     return jsonify(response_object)
         
 

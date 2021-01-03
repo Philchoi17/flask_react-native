@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Button, SafeAreaView } from 'react-native'
 import Config from '../../config/Config'
+import { AuthStore } from '../../stores'
 
 class HomeScreen extends Component {
   render() {
@@ -15,6 +16,10 @@ class HomeScreen extends Component {
         <Button 
           title='testing'
           onPress={ () => console.log(Config.lang, Config.serverURL) }
+        />
+        <Button
+          title='testing UserObj'
+          onPress={ () => console.log(AuthStore.userObj) }
         />
       </View>
     )
